@@ -1,4 +1,4 @@
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import { headerClass, mainClass, themeColor } from "../styles/styles";
 import Text from "@/components/ui/text";
 import {

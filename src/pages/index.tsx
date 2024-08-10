@@ -12,7 +12,7 @@ const Home = () => {
             {t("introduceTitle")}
           </Text>
           <Text size="4xl" weight="extrabold" className="text-primary">
-          {t("WebDeveloper")}
+            {t("WebDeveloper")}
           </Text>
         </div>
         <div className="justify-self-center h-fit self-end">
