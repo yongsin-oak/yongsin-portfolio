@@ -69,7 +69,7 @@ const MenuLayout = ({ children }: Props) => {
                       "hover:bg-transparent active:bg-transparent focus:bg-transparent"
                     )}
                   >
-                    test
+                    Test
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
