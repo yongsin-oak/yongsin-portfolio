@@ -33,11 +33,6 @@ const MenuLayout = ({ children }: Props) => {
     setMounted(true);
     // router.push(router.pathname, router.asPath, { locale: i18n.language });
   }, []);
-  useEffect(() => {
-    if (ready && mounted) {
-      router.push(router.pathname, router.asPath, { locale: i18n.language });
-    }
-  }, [i18n.language]);
   if (!ready || !mounted) return null;
   return (
     <div className={cn(mainClass)}>
