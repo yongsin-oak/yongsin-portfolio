@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import { headerClass, mainClass, themeColor } from "../styles/styles";
 import Text from "@/components/ui/text";
 import {
@@ -31,34 +31,48 @@ const MenuLayout = ({ children }: Props) => {
   };
   useEffect(() => {
     setMounted(true);
-    router.push(router.pathname, router.asPath, { locale: i18n.language });
+    // router.push(router.pathname, router.asPath, { locale: i18n.language });
+  }, []);
+  useEffect(() => {
+    if (ready && mounted) {
+      router.push(router.pathname, router.asPath, { locale: i18n.language });
+    }
   }, [i18n.language]);
   if (!ready || !mounted) return null;
   return (
     <div className={cn(mainClass)}>
       <header className={cn(headerClass)}>
-        <NavigationMenu className="min-w-full pb-2 py-4 justify-between">
+        <NavigationMenu className="min-w-full pb-2 py-4 justify-between h-full">
           <NavigationMenuList className="gap-8">
             <div className="flex items-center md:hidden">
               <Menu width={48} height={48} />
             </div>
             <div className="hidden items-center md:flex h-full">
-              <UsersRound color={themeColor.primary} width={48} height={48} />
+              <UsersRound color={themeColor.primary} width={36} height={36} />
+              <Text weight="bold" size="2xl" className="text-primary">
+                Yongsin
+              </Text>
             </div>
             <div className="hidden md:flex w-full h-full items-center">
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
+                <Link href="/sec1" legacyBehavior passHref>
                   <NavigationMenuLink
-                    className={cn(navigationMenuTriggerStyle())}
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                    )}
                   >
-                    English
+                    About
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink
-                    className={cn(navigationMenuTriggerStyle())}
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                    )}
                   >
                     test
                   </NavigationMenuLink>
@@ -68,7 +82,10 @@ const MenuLayout = ({ children }: Props) => {
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={cn(navigationMenuTriggerStyle())}
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "hover:bg-transparent active:bg-transparent focus:bg-transparent font-medium"
+                      )}
                       onClick={() => setTheme("light")}
                     >
                       Documentation
@@ -91,14 +108,14 @@ const MenuLayout = ({ children }: Props) => {
             <Separator orientation="vertical" />
             <NavigationMenuItem>
               <Button
-                variant={i18n.language === "en" ? "default" : "ghost"}
+                variant={i18n.language.includes("en") ? "default" : "ghost"}
                 className="focus-visible:ring-transparent text-foreground"
                 onClick={() => changeLanguage("en")}
               >
                 <Text>EN</Text>
               </Button>
             </NavigationMenuItem>
-            <Separator orientation="vertical"/>
+            <Separator orientation="vertical" />
             <NavigationMenuItem>
               <Button
                 variant={i18n.language === "th" ? "default" : "ghost"}
@@ -110,8 +127,9 @@ const MenuLayout = ({ children }: Props) => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        {/* <Separator /> */}
       </header>
-      {children}
+      <div className="px-16 w-screen">{children}</div>
     </div>
   );
 };

@@ -1,8 +1,7 @@
-export const mainClass = "flex flex-col px-8 min-h-screen w-screen";
+export const mainClass = "min-h-screen w-screen overflow-x-hidden";
 export const headerClass =
-  "sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60";
+  "sticky h-16 top-0 z-50 w-full border-border/90 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-16";
 export const flexRow = "flex flex-row";
-
 export interface Theme {
   background: string;
   foreground: string;
