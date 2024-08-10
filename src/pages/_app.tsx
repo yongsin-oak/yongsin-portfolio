@@ -2,7 +2,7 @@ import MenuLayout from "@/pages/menuLayout";
 import { appWithTranslation } from "next-i18next";
 import { AppProps } from "next/app";
 import "../styles/globals.css";
-import { ThemeProvider } from "@/pages/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Theme } from "@radix-ui/themes";
 import "../i18n/i18n";
 import { K2D } from "next/font/google";
